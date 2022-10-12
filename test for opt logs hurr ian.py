@@ -56,11 +56,22 @@ list_bus_scheduled = list_bus_scheduled_selected_elements
 # df_line_up = df_line_up[ (df_line_up['Replaced With Bus #'] == 'FIXED') or (df_line_up['Replaced With Bus #'][0].isdigit())
 
 
+# list_bus_actual = df_line_up['Replaced with bus #'].tolist() # list of buses scheduled
+list_bus_actual = df_line_up.iloc[:,3].tolist() # list of bus that will replace the scheduled bus before the scheduled bus operates
+list_bus_actual = list_bus_actual[:int(end_row)] # use the end row index to cut off the rest of the list
+list_bus_actual = [str(item) for item in list_bus_actual] # convert number and text elements to text
+list_bus_actual = [x.strip(' ') for x in list_bus_actual] # delete accidental blank entries
+    
 
-# drop trailing zero from string
-listOfNum = [1.0, 235, 541.0, 560]
-listOfNum = [str(item) for item in listOfNum]
-listOfNum
-list_test = [i.strip('.0') for i in listOfNum]
-list_test
+# Actually Operated Buses
+# find the index of actual operated buses
+for index, bus in enumerate(list_bus_actual):
+#         if math.isnan(bus) is False:
+        if (str(bus)).isnumeric(): # if the bus ID is numeric
+    #         print(index, bus)
+            list_bus_scheduled[index] = list_bus_actual[index]  # replace the scheduled bus with actual bus
+
+list_bus_scheduled = [int(item) for item in list_bus_scheduled] # convert the float to int
+
+
 
