@@ -46,11 +46,12 @@ auto-py-to-exe
 - (1) only pick up 3-digit Bus number
 - (2) remove text in stand-by list 
 - (3) remove '/' and ' / " from stand_by_list
+- (4) remove nvarchar text from daily line up tab
 
 
 | File Name | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `ProbeCheck_V4` | `.py` | **Required**. It is the main file, updated to 4th version |
+| `ProbeCheck V4` | `.py` | **Required**. It is the main file, updated to 4th version |
 
 #### Other supplementary files description
 
